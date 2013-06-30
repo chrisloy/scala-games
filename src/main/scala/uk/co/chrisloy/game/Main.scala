@@ -19,10 +19,10 @@ object Main {
     val r480 = (640, 480)
     val r360 = (480, 360)
     
-    val (xSize, ySize) = r720
-    val fullscreen = false
+    val (xSize, ySize) = r1080
+    val fullscreen = true
     
-    val game = new PixelSwarm(xSize, ySize, true)
+    val game = new PixelSwarm(xSize, ySize, fullscreen)
     
     new GameRunner(game, true, 60).start() ! Start
   }

@@ -15,7 +15,7 @@ class PixelSwarm(val xSize:Int, val ySize:Int, val startFullscreen:Boolean) exte
   val name = "Pixel Swarm"
   val size = (xSize, ySize)
   
-  val startCount = 500
+  val startCount = 0
   
   var dead = false
   
