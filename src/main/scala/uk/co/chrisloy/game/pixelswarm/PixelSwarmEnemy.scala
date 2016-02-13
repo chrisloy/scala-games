@@ -51,5 +51,5 @@ class PixelSwarmEnemy(val xSize:Int, val ySize:Int, val r:Int, val p:PixelSwarmP
     y = if (my < 0) 0 else if (my > maxY) maxY else my
   }
   
-  def collides() = math.abs(x - p.x) < r && math.abs(y - p.y) < r
+  def collides = math.abs(x - p.x) < r && math.abs(y - p.y) < r
 }

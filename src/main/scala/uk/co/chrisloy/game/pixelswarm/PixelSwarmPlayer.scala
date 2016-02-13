@@ -2,10 +2,10 @@ package uk.co.chrisloy.game.pixelswarm
 
 class PixelSwarmPlayer(val r:Int, val initX:Int, val initY:Int, val maxX:Int, val maxY:Int, val speed:Int, val succeed:() => Unit) {
     
-  var up:Boolean = false
-  var left:Boolean = false
-  var down:Boolean = false
-  var right:Boolean = false
+  var up    = false
+  var left  = false
+  var down  = false
+  var right = false
   
   var x = initX
   var y = initY

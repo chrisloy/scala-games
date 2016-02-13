@@ -7,16 +7,14 @@ import java.awt.event.MouseEvent
 
 trait Controls extends KeyListener with MouseListener {
   
-  // Ignore these
-  def keyTyped(event:KeyEvent):Unit = None
-  def mouseClicked(event:MouseEvent):Unit = None
-  def mouseMoved(event:MouseEvent):Unit = None
-  def mouseEntered(event:MouseEvent):Unit = None
-  def mouseExited(event:MouseEvent):Unit = None
+  def keyTyped(event:KeyEvent) = ()
+  def mouseClicked(event:MouseEvent) = ()
+  def mouseMoved(event:MouseEvent) = ()
+  def mouseEntered(event:MouseEvent) = ()
+  def mouseExited(event:MouseEvent) = ()
   
-  // TODO
-  def keyPressed(event:KeyEvent):Unit
-  def keyReleased(event:KeyEvent):Unit
-  def mousePressed(event:MouseEvent):Unit = None
-  def mouseReleased(event:MouseEvent):Unit = None
+  def keyPressed(event:KeyEvent) = ()
+  def keyReleased(event:KeyEvent) = ()
+  def mousePressed(event:MouseEvent) = ()
+  def mouseReleased(event:MouseEvent) = ()
 }
