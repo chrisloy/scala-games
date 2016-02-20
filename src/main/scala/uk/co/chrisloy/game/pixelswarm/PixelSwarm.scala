@@ -14,19 +14,19 @@ class PixelSwarm(val xSize:Int, val ySize:Int, val startFullscreen:Boolean) exte
   val name = "Pixel Swarm"
   val size = (xSize, ySize)
   
-  val startCount = 0
+  val startCount = 2500
   
   var dead = false
   
   val r = xSize / 95
   val pspeed = xSize / 75
-  val espeed = xSize / 450
+  def espeed = xSize / 450// * (util.Random.nextInt(3) + 1)
   
   val p = new PixelSwarmPlayer(r, xSize/4, ySize/2, xSize-r, ySize-r, pspeed, succeed)
   
   val rand = new Random()
   
-  var es:List[PixelSwarmEnemy] = Nil
+  var es: List[PixelSwarmEnemy] = Nil
   
   for (i <- 1 to startCount) {
     es = enemy() :: es
@@ -68,28 +68,31 @@ class PixelSwarm(val xSize:Int, val ySize:Int, val startFullscreen:Boolean) exte
     } else {
       screen.background(BLACK)
     }
-    screen.write(es.size.toString, GRAY, font, 20, 70)
+    screen.write((es.size-startCount).toString, GRAY, font, 20, 70)
     es.foreach(e => screen.fill(e.col, Array(e.x, e.x, e.x + r, e.x + r), Array(e.y, e.y + r, e.y + r, e.y)))
     screen.fill(WHITE, Array(p.x, p.x, p.x + r, p.x + r), Array(p.y, p.y + r, p.y + r, p.y))
   }
   
   val controls = new Controls() {
+
+    import KeyEvent._
+
     override def keyPressed(event:KeyEvent): Unit = {
-      event.getKeyChar match {
-        case 'w' => p.up    = true
-        case 'a' => p.left  = true
-        case 's' => p.down  = true
-        case 'd' => p.right = true
-        case  _  =>
+      event.getKeyCode match {
+        case VK_W | VK_UP    => p.up    = true
+        case VK_A | VK_LEFT  => p.left  = true
+        case VK_S | VK_DOWN  => p.down  = true
+        case VK_D | VK_RIGHT => p.right = true
+        case _ =>
       }
     }
     override def keyReleased(event:KeyEvent): Unit = {
-      event.getKeyChar match {
-        case 'w' => p.up    = false
-        case 'a' => p.left  = false
-        case 's' => p.down  = false
-        case 'd' => p.right = false
-        case  _  =>
+      event.getKeyCode match {
+        case VK_W | VK_UP    => p.up    = false
+        case VK_A | VK_LEFT  => p.left  = false
+        case VK_S | VK_DOWN  => p.down  = false
+        case VK_D | VK_RIGHT => p.right = false
+        case _ =>
       }
     }
   }
