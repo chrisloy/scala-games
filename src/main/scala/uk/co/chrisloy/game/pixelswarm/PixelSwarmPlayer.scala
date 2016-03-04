@@ -1,6 +1,6 @@
 package uk.co.chrisloy.game.pixelswarm
 
-class PixelSwarmPlayer(val r:Int, val initX:Int, val initY:Int, val maxX:Int, val maxY:Int, val speed:Int, val succeed:() => Unit) {
+class PixelSwarmPlayer(val r: Int, val initX: Int, val initY: Int, val maxX: Int, val maxY: Int, val speed: Int, val succeed: () => Unit) {
     
   var up    = false
   var left  = false

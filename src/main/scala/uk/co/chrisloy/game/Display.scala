@@ -17,6 +17,7 @@ sealed trait Display {
   def getPosition: Option[(Int, Int)]
 
   def addControls(controls: Controls)
+  def removeControls(controls: Controls)
 
   def focus()
 }
@@ -48,6 +49,11 @@ case class WindowDisplay(name: String, xSize: Int, ySize: Int) extends JFrame(na
   def addControls(controls: Controls) = {
     canvas.addKeyListener(controls)
     canvas.addMouseListener(controls)
+  }
+
+  def removeControls(controls: Controls) = {
+    canvas.removeKeyListener(controls)
+    canvas.removeMouseListener(controls)
   }
 
   def getPosition = {
@@ -83,6 +89,11 @@ case class FullScreen(xSize: Int, ySize: Int) extends JFrame with Display {
   def addControls(controls: Controls) = {
     addMouseListener(controls)
     addKeyListener(controls)
+  }
+
+  def removeControls(controls: Controls) = {
+    removeMouseListener(controls)
+    removeKeyListener(controls)
   }
 
   def getPosition = {

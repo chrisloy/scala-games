@@ -1,6 +1,6 @@
 package uk.co.chrisloy.game
 
-import uk.co.chrisloy.game.pixelswarm.PixelSwarm
+import uk.co.chrisloy.game.pixelswarm._
 
 object Main extends App {
   
@@ -17,7 +17,7 @@ object Main extends App {
 
   val fullscreen = false
 
-  val game = new PixelSwarm(xSize, ySize, fullscreen)
-
-  new GameRunner(game, true, 60).start()
+  val runner = new GameRunner(60, "PixelSwarm", fullscreen, xSize, ySize)
+  val menu = new Menu(xSize, ySize, runner)
+  runner.start(menu)
 }
